@@ -1,4 +1,4 @@
-<sup>(deep breath, all together now...)</sup>
+<sup>(all together now...)</sup>
 # cucumber-jvm-java-maven-parallel-picocontainer-selenium-webdriver-pagefactory-skeleton
 *Because no-one else should have to suffer what I did to work this out*
 
@@ -13,4 +13,5 @@ All the things in one project. No, thank *you*.
 - [ ] Parallel test execution, because slightly faster snail
 - [ ] [Selenium Webdriver](http://www.seleniumhq.org/projects/webdriver/), because browser testing
 - [ ] [PageFactory](https://github.com/SeleniumHQ/selenium/wiki/PageFactory), because page object model
+- [ ] Target env a runtime switch, because flexible
 - [ ] Example tests
