@@ -13,3 +13,4 @@ All the things in one project. No, thank *you*.
 - [ ] Parallel test execution, because slightly faster snail
 - [ ] [Selenium Webdriver](http://www.seleniumhq.org/projects/webdriver/), because browser testing
 - [ ] [PageFactory](https://github.com/SeleniumHQ/selenium/wiki/PageFactory), because page object model
+- [ ] Example tests
