@@ -17,3 +17,5 @@ target/*
 # IDE stuff
 .idea/*
 *.iml
+.settings/*
+
