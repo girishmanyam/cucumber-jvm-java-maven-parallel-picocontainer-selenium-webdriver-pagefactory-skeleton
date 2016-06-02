@@ -21,4 +21,5 @@ All the things in one project. No, thank *you*.
 - [x] [PageFactory](https://github.com/SeleniumHQ/selenium/wiki/PageFactory), because page object model
 - [x] Cross-browser, because cross-browser
 - [ ] Target env a runtime switch, because flexible
+- [ ] `mvn test` for wip, `mvn integration-test` for regression
 - [ ] Example tests
