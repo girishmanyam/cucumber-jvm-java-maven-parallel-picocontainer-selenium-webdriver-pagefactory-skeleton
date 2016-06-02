@@ -14,6 +14,9 @@
 		<picocontainer.version>2.15</picocontainer.version>
 		<selenium.webdriver.version>2.53.0</selenium.webdriver.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<surefire.maven.plugin.version>2.19.1</surefire.maven.plugin.version>
+		<cucumber.jvm.parallel.version>1.2.1</cucumber.jvm.parallel.version>
+		<acceptance.test.parallel.count>2</acceptance.test.parallel.count>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -51,17 +54,17 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
-			<version>2.53.0</version>
+			<version>${selenium.webdriver.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
-			<version>2.53.0</version>
+			<version>${selenium.webdriver.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
-			<version>2.53.0</version>
+			<version>${selenium.webdriver.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -73,6 +76,61 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.github.temyers</groupId>
+				<artifactId>cucumber-jvm-parallel-plugin</artifactId>
+				<version>${cucumber.jvm.parallel.version}</version>
+				<executions>
+					<execution>
+						<id>generateRunners</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>generateRunners</goal>
+						</goals>
+						<configuration>
+							<glue>automation</glue>
+							<outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
+							<featuresDirectory>src/test/resources/automation/</featuresDirectory>
+							<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
+							<format>json</format>
+							<strict>true</strict>
+							<monochrome>true</monochrome>
+							<tags>"~@ignore"</tags>
+							<filterFeaturesByTags>true</filterFeaturesByTags>
+							<namingScheme>simple</namingScheme>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire.maven.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>default-test</id>
+						<phase>dont-execute</phase>
+					</execution>
+					<execution>
+						<id>acceptance-test</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<forkCount>${acceptance.test.parallel.count}</forkCount>
+							<reuseForks>true</reuseForks>
+							<includes>
+								<include>**/*IT.class</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
