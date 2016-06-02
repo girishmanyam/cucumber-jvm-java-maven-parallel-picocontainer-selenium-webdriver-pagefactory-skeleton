@@ -11,7 +11,8 @@ All the things in one project. No, thank *you*.
 - [x] [Picocontainer integration](https://cucumber.io/blog/2015/07/08/polymorphic-step-definitions), because [dependency injection](http://martinfowler.com/articles/injection.html)
 - [ ] JUnit format output, because [continuous delivery](https://continuousdelivery.com/foundations/test-automation/)
 - [ ] Parallel test execution, because slightly faster snail
-- [ ] [Selenium Webdriver](http://www.seleniumhq.org/projects/webdriver/), because browser testing
-- [ ] [PageFactory](https://github.com/SeleniumHQ/selenium/wiki/PageFactory), because page object model
+- [x] [Selenium Webdriver](http://www.seleniumhq.org/projects/webdriver/), because browser testing
+- [x] [PageFactory](https://github.com/SeleniumHQ/selenium/wiki/PageFactory), because page object model
+- [x] Cross-browser, because cross-browser
 - [ ] Target env a runtime switch, because flexible
 - [ ] Example tests
