@@ -66,6 +66,11 @@
 			<artifactId>selenium-chrome-driver</artifactId>
 			<version>${selenium.webdriver.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
