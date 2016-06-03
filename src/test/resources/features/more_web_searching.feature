@@ -1,3 +1,4 @@
+@complete
 Feature: Search the web some more to demonstrate parallel testing
   As an ignorant
   In order to learn things
