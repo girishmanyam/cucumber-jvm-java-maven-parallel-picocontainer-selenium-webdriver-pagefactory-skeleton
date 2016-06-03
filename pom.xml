@@ -8,14 +8,15 @@
 	<name>automation</name>
 	<url>http://maven.apache.org</url>
 	<properties>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<junit.version>4.12</junit.version>
 		<cucumber.version>1.2.4</cucumber.version>
 		<picocontainer.version>2.15</picocontainer.version>
 		<selenium.webdriver.version>2.53.0</selenium.webdriver.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<surefire.maven.plugin.version>2.19.1</surefire.maven.plugin.version>
 		<cucumber.jvm.parallel.version>1.2.1</cucumber.jvm.parallel.version>
+		<maven.failsafe.plugin.version>2.19.1</maven.failsafe.plugin.version>
 		<acceptance.test.parallel.count>2</acceptance.test.parallel.count>
 	</properties>
 	<dependencies>
@@ -69,7 +70,12 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-ie-driver</artifactId>
-			<version>RELEASE</version>
+			<version>${selenium.webdriver.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-failsafe-plugin</artifactId>
+			<version>${maven.failsafe.plugin.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -100,12 +106,12 @@
 						<configuration>
 							<glue>automation</glue>
 							<outputDirectory>${project.build.directory}/generated-test-sources/cucumber</outputDirectory>
-							<featuresDirectory>src/test/resources/automation/</featuresDirectory>
+							<featuresDirectory>src/test/resources/features/</featuresDirectory>
 							<cucumberOutputDir>target/cucumber-parallel</cucumberOutputDir>
 							<format>json</format>
 							<strict>true</strict>
 							<monochrome>true</monochrome>
-							<tags>"~@ignore"</tags>
+							<tags>"@complete","~@wip"</tags>
 							<filterFeaturesByTags>true</filterFeaturesByTags>
 							<namingScheme>simple</namingScheme>
 						</configuration>
@@ -114,22 +120,18 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${surefire.maven.plugin.version}</version>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven.failsafe.plugin.version}</version>
 				<executions>
 					<execution>
-						<id>default-test</id>
-						<phase>dont-execute</phase>
-					</execution>
-					<execution>
-						<id>acceptance-test</id>
-						<phase>integration-test</phase>
+						<id>integration-test</id>
 						<goals>
-							<goal>test</goal>
+						    <goal>integration-test</goal>
+							<goal>verify</goal>
 						</goals>
 						<configuration>
 							<forkCount>${acceptance.test.parallel.count}</forkCount>
-							<reuseForks>true</reuseForks>
+							<reuseForks>false</reuseForks>
 							<includes>
 								<include>**/*IT.class</include>
 							</includes>
