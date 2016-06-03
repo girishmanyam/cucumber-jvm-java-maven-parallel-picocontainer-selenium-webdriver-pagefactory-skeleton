@@ -13,6 +13,11 @@ All the things required to run cucumber-jvm in parallel and cross-browser in one
 
 `mvn verify` to run in parallel all tests tagged `@complete`
 
+## Requirements
+
+- Java 8
+- Maven 3.3
+
 ### Parallel test execution
 
 Currently hardcoded in the pom.xml file to run 2 feature files at a time. This is set in the
@@ -47,6 +52,7 @@ packages. Hack as necessary.
 - [x] Cross-browser, because cross-browser
 - [ ] Target env a runtime switch, because flexible
 - [x] `mvn test` for wip, `mvn verify` for regression
+- [x] Logging with slf4j/logback, because useful
 - [ ] Example tests
 
 ## Acknowledgements

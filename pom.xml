@@ -17,6 +17,8 @@
 		<selenium.webdriver.version>2.53.0</selenium.webdriver.version>
 		<cucumber.jvm.parallel.version>1.2.1</cucumber.jvm.parallel.version>
 		<maven.failsafe.plugin.version>2.19.1</maven.failsafe.plugin.version>
+		<slf4j.version>1.7.21</slf4j.version>
+		<logback.version>1.1.7</logback.version>
 		<acceptance.test.parallel.count>2</acceptance.test.parallel.count>
 	</properties>
 	<dependencies>
@@ -73,9 +75,14 @@
 			<version>${selenium.webdriver.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-failsafe-plugin</artifactId>
-			<version>${maven.failsafe.plugin.version}</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
