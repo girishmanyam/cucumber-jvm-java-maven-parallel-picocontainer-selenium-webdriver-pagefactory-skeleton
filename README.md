@@ -18,7 +18,7 @@ All the things required to run cucumber-jvm in parallel and cross-browser in one
 Currently hardcoded in the pom.xml file to run 2 feature files at a time. This is set in the
 `acceptance.test.parallel.count` property.
 
-Parallel test functionality provided by the [cucumber-jvm-parallel-plugin](https://github.com/temyers/cucumber-jvm-parallel-plugin)
+Parallel test functionality provided by the [cucumber-jvm-parallel-plugin](https://github.com/temyers/cucumber-jvm-parallel-plugin) and the [maven-failsafe-plugin](http://maven.apache.org/surefire/maven-failsafe-plugin/usage.html).
 
 ### Cross browser
 
