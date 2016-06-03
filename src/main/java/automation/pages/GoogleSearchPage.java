@@ -8,27 +8,28 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.concurrent.TimeUnit;
 
 public class GoogleSearchPage {
-    private String url = "http://www.google.co.uk/";
-    private WebDriver driver;
+	private String url = "http://www.google.co.uk/";
+	private WebDriver driver;
 
-    @FindBy(css="#lst-ib")
-    WebElement searchField;
+	@FindBy(css = "#lst-ib")
+	WebElement searchField;
 
-    @FindBy(css="button[name='btnG']")
-    WebElement searchButton;
+	@FindBy(css = "button[name='btnG']")
+	WebElement searchButton;
 
-    public GoogleSearchPage(WebDriver commonDriver) {
-        driver = commonDriver;
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        PageFactory.initElements(driver, this);
-    }
+	public GoogleSearchPage(WebDriver commonDriver) {
+		driver = commonDriver;
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		PageFactory.initElements(driver, this);
+	}
 
-    public void load() {
-        driver.get(url);
-    }
+	public void load() {
+		driver.get(url);
+	}
 
-    public void searchFor(String searchString) {
-        searchField.sendKeys(searchString + "\n");
-        searchButton.click();
-    }
+	public void searchFor(String searchString) {
+		searchField.clear();
+		searchField.sendKeys(searchString + "\n");
+		searchButton.click();
+	}
 }

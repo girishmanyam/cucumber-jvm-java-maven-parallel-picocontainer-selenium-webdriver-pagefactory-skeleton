@@ -6,17 +6,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class GoogleSearchResultsPage {
-    private WebDriver driver;
+	private WebDriver driver;
 
-    @FindBy(css=".g .r")
-    WebElement firstHitDescriptionText;
+	@FindBy(css = ".g .r")
+	WebElement firstHitDescriptionText;
 
-    public GoogleSearchResultsPage(WebDriver commonDriver) {
-        driver = commonDriver;
-        PageFactory.initElements(driver, this);
-    }
+	public GoogleSearchResultsPage(WebDriver commonDriver) {
+		driver = commonDriver;
+		PageFactory.initElements(driver, this);
+	}
 
-    public String firstHitTitle() {
-        return firstHitDescriptionText.getText();
-    }
+	public String firstHitTitle() {
+		return firstHitDescriptionText.getText();
+	}
 }
