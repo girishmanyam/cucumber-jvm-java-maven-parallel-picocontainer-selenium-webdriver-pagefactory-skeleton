@@ -18,6 +18,8 @@ All the things required to run cucumber-jvm in parallel and cross-browser in one
 Currently hardcoded in the pom.xml file to run 2 feature files at a time. This is set in the
 `acceptance.test.parallel.count` property.
 
+Results of parallel execution are in `junit` format and can be found in the `target/cucumber-parallel` directory as configured in the pom.xml file. Because of [this bug](https://github.com/cucumber/cucumber-jvm/issues/477) the `testsuite/name` value ends up being `cucumber.runtime.formatter.JUnitFormatter` :/
+
 Parallel test functionality provided by the [cucumber-jvm-parallel-plugin](https://github.com/temyers/cucumber-jvm-parallel-plugin) and the [maven-failsafe-plugin](http://maven.apache.org/surefire/maven-failsafe-plugin/usage.html).
 
 ### Cross browser
@@ -38,7 +40,7 @@ packages. Hack as necessary.
 - [x] [Mavenized](https://maven.apache.org/pom.html) the project
 - [x] [Cucumber](https://cucumber.io/) test runner, because shiny
 - [x] [Picocontainer integration](https://cucumber.io/blog/2015/07/08/polymorphic-step-definitions), because [dependency injection](http://martinfowler.com/articles/injection.html)
-- [ ] JUnit format output, because [continuous delivery](https://continuousdelivery.com/foundations/test-automation/)
+- [x] JUnit format output, because [continuous delivery](https://continuousdelivery.com/foundations/test-automation/)
 - [x] Parallel test execution, because slightly faster snail
 - [x] [Selenium Webdriver](http://www.seleniumhq.org/projects/webdriver/), because browser testing
 - [x] [PageFactory](https://github.com/SeleniumHQ/selenium/wiki/PageFactory), because page object model
