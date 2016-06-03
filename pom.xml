@@ -126,7 +126,7 @@
 					<execution>
 						<id>integration-test</id>
 						<goals>
-						    <goal>integration-test</goal>
+							<goal>integration-test</goal>
 							<goal>verify</goal>
 						</goals>
 						<configuration>
