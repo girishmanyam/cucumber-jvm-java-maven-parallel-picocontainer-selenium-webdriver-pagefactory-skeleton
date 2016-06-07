@@ -25,6 +25,10 @@ Convention suggests that the Maven [surefire](http://maven.apache.org/surefire) 
 
 > Also worth noting the failsafe output regarding the number of tests is incorrect, it counts steps and the scenario itself so a single scenario comprising 4 steps counts as 5 tests! For more info see this [issue](https://github.com/cucumber/cucumber-jvm/issues/263)
 
+## Clean Build Outputs
+
+`mvn clean` will remove the `target` directory and all the compiled resources and reports.
+
 ## Requirements
 
 - Java 8
@@ -35,7 +39,7 @@ Convention suggests that the Maven [surefire](http://maven.apache.org/surefire) 
 Currently hardcoded in the pom.xml file to run 2 feature files at a time. This is set in the
 `acceptance.test.parallel.count` property.
 
-Results of parallel execution are in `junit` format and can be found in the `target/cucumber-parallel` directory as configured in the pom.xml file.
+Results of parallel execution are in `junit` and `json` format and can be found in the `target/cucumber-parallel` directory as configured in the pom.xml file. This allows standard Jenkins JUnit reporting and the slightly more eye catching [cucumber reports](https://github.com/jenkinsci/cucumber-reports-plugin) plugin.
 
 Parallel test functionality provided by the [cucumber-jvm-parallel-plugin](https://github.com/temyers/cucumber-jvm-parallel-plugin) which generates the 'runner classes' (see `target/generated-test-sources/cucumber`) and the [maven-failsafe-plugin](http://maven.apache.org/surefire/maven-failsafe-plugin/usage.html).
 
