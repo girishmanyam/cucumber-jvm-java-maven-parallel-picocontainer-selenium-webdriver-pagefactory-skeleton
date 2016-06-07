@@ -1,4 +1,4 @@
-package automation;
+package automation.support;
 
 import automation.ui.SharedDriver;
 import cucumber.runtime.java.picocontainer.PicoFactory;

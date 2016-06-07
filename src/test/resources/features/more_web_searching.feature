@@ -27,4 +27,4 @@ Feature: Search the web some more to demonstrate parallel testing
   Scenario: Search for word beginning with E
     Given I am using Google
 	When I search for elephant
-	Then I am shown search results for elephant
+	Then I am shown search results for elephont
