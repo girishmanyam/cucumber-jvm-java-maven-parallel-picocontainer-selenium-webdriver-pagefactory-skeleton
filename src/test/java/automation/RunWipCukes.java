@@ -7,6 +7,6 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin={"pretty"}, features = "src/test/resources", tags = {"@wip"}) //if you're on windows add `monochrome=true` for clean output
-public class RunWipTest {
+public class RunWipCukes {
 	
 }

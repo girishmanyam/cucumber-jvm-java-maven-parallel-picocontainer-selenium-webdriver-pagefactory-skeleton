@@ -9,9 +9,17 @@ All the things required to run cucumber-jvm in parallel and cross-browser in one
 
 ## Usage
 
-`mvn test` to run the test you're currently working on (tagged with `@wip`)
+Convention suggests that the Maven [surefire](http://maven.apache.org/surefire) should be used for unit tests and the [failsafe](http://maven.apache.org/surefire/maven-failsafe-plugin/usage.html) plugin should be used for integration testing.  The main reason for this is that surefire will automatically fail the build on any unit test failure but the failsafe plugin allows for greater developer control over how failure should impact overall build status.
 
-`mvn verify` to run in parallel all tests tagged `@complete`
+`mvn test` to run unit tests (currently just an example unit test)
+
+`mvn verify` to run the feature/scenario you're currently working on (tagged with `@wip`)
+
+`mvn verify -Dcucumber.opts="--tags @foo"` to run features/scenarios tagged `@foo`
+
+`mvn -Pparallel-cuke verify` to run in parallel all tests tagged `@complete`
+
+> It's worth being aware that the failsafe `integration-test` goal will NOT fail a build, this is why you would typically run `verify`.  Note also unit tests will ALWAYS run regardless of your target goal - this is intentional.
 
 ## Requirements
 
