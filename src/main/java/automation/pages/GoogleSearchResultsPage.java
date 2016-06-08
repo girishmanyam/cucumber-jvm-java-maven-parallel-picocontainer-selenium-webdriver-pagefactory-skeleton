@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class GoogleSearchResultsPage {
-	private WebDriver driver;
+	private final WebDriver driver;
 
 	@FindBy(css = ".g .r")
-	WebElement firstHitDescriptionText;
+	private WebElement firstHitDescriptionText;
 
 	public GoogleSearchResultsPage(WebDriver commonDriver) {
 		driver = commonDriver;

@@ -2,7 +2,7 @@ package automation.ui;
 
 import org.openqa.selenium.WebDriver;
 
-public class BrowserFactory {
+class BrowserFactory {
 
     public static WebDriver getBrowser() {
         String desiredBrowserName = System.getProperty("browser", "firefox");

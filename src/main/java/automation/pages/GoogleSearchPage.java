@@ -8,14 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.concurrent.TimeUnit;
 
 public class GoogleSearchPage {
-	private String url = "http://www.google.co.uk/";
-	private WebDriver driver;
+	private final String url = "http://www.google.co.uk/";
+	private final WebDriver driver;
 
 	@FindBy(css = "#lst-ib")
-	WebElement searchField;
+	private WebElement searchField;
 
 	@FindBy(css = "button[name='btnG']")
-	WebElement searchButton;
+	private WebElement searchButton;
 
 	public GoogleSearchPage(WebDriver commonDriver) {
 		driver = commonDriver;

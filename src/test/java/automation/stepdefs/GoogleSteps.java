@@ -13,10 +13,10 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
 public class GoogleSteps {
-	private GoogleSearchPage googleSearchPage;
-	private GoogleSearchResultsPage googleSearchResultsPage;
+	private final GoogleSearchPage googleSearchPage;
+	private final GoogleSearchResultsPage googleSearchResultsPage;
 	
-	Logger logger = LoggerFactory.getLogger(GoogleSteps.class);
+	private final Logger logger = LoggerFactory.getLogger(GoogleSteps.class);
 
 	public GoogleSteps(GoogleSearchPage commonGoogleSearchPage, GoogleSearchResultsPage commonGoogleSearchResultsPage) {
 		googleSearchPage = commonGoogleSearchPage;

@@ -25,7 +25,7 @@ Convention suggests that the Maven [surefire](http://maven.apache.org/surefire) 
 
 > Also worth noting the failsafe output regarding the number of tests is incorrect, it counts steps and the scenario itself so a single scenario comprising 4 steps counts as 5 tests! For more info see this [issue](https://github.com/cucumber/cucumber-jvm/issues/263)
 
-## Clean Build Outputs
+### Clean Build Outputs
 
 `mvn clean` will remove the `target` directory and all the compiled resources and reports.
 
@@ -55,6 +55,12 @@ Options are:
 
 Driver executable locations are currently hardcoded in the browser classes in the `automation.ui`
 packages. Hack as necessary.
+
+### Service Testing (REST and friends...)
+
+We are using [REST-assured](https://github.com/rest-assured/rest-assured) as our client of choice.  It exposes a nice [DSL](https://en.wikipedia.org/wiki/Domain-specific_language) for testing REST like services, meaning more time spent thinking about the problem and less about boilerplate code. Note REST-assured is happy working with both JSON and XML (and therefore also HTML).
+
+If you want to TDD your service test classes with a fake service running over http then [Wiremock](https://github.com/tomakehurst/wiremock) is your friend.  The included [examples](src/test/java/unit/BBCServiceTest.java) illustrate how this can be achieved.
 
 ## Project status
 

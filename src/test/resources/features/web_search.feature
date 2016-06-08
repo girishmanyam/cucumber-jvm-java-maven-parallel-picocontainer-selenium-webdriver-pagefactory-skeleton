@@ -19,7 +19,6 @@ Feature: Search the web
 	When I search for cat
 	Then I am shown search results for cat
 
-  @wip
   Scenario: Search for word beginning with D
     Given I am using Google
 	When I search for dog

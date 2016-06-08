@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ChromeBrowser extends ChromeDriver {
+class ChromeBrowser extends ChromeDriver {
     public static WebDriver buildChromeBrowser() {
     	System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
         ChromeBrowser browser = new ChromeBrowser();

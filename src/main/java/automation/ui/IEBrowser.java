@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class IEBrowser extends InternetExplorerDriver {
+class IEBrowser extends InternetExplorerDriver {
     public static WebDriver buildIEBrowser() {
         DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
         capabilities.setCapability(IGNORE_ZOOM_SETTING, true);
