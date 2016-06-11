@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 class BrowserFactory {
 
-    public static WebDriver getBrowser() {
+    public static WebDriver getBrowser() throws Throwable {
         String desiredBrowserName = System.getProperty("browser", "firefox");
         WebDriver desiredBrowser = null;
 

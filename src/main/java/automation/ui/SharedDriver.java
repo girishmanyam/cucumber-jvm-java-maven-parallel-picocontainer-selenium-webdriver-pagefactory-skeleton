@@ -12,6 +12,8 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static automation.ui.BrowserFactory.getBrowser;
+
 /**
  * <p>
  * Example of a WebDriver implementation that has delegates all methods to a static instance (REAL_DRIVER) that is only
@@ -33,7 +35,7 @@ import java.util.concurrent.TimeUnit;
  * </p>
  */
 public class SharedDriver extends EventFiringWebDriver {
-    private static final WebDriver REAL_DRIVER = BrowserFactory.getBrowser();
+    private static final WebDriver REAL_DRIVER;
     private static final Thread CLOSE_THREAD = new Thread() {
         @Override
         public void run() {
@@ -43,6 +45,12 @@ public class SharedDriver extends EventFiringWebDriver {
 
     static {
         Runtime.getRuntime().addShutdownHook(CLOSE_THREAD);
+        try {
+            REAL_DRIVER = getBrowser();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            throw new Error(throwable);
+        }
     }
 
     public SharedDriver() {
