@@ -8,31 +8,39 @@ public class TestConfig {
     private static String requiredEnvironmentName;
     private static Properties properties;
 
-    public static String valueFor(final String keyName) throws IOException {
+    public static String valueFor(final String keyName) throws Throwable {
         return getInstance().getProperty(keyName);
     }
 
-    private static TestConfig getInstance() throws IOException {
-        if(testConfig == null) {
+    private static TestConfig getInstance() throws Throwable {
+        if (testConfig == null) {
+            properties = new Properties();
             requiredEnvironmentName = System.getProperty("env", "local");
-            populateEnvPropertyDetails(requiredEnvironmentName);
+            populateCommonProperties();
+            populateEnvProperties(requiredEnvironmentName);
             testConfig = new TestConfig();
         }
         return testConfig;
     }
 
-    private static void populateEnvPropertyDetails(final String requiredEnvironment) throws IOException {
-        String propertiesFilePath = String.format("src/test/resources/config/%s.properties", requiredEnvironment);
+    private static void populateCommonProperties() throws Throwable {
+        readInPropertiesFile("common");
+    }
+
+    private static void populateEnvProperties(final String requiredEnvironment) throws Throwable {
+        readInPropertiesFile(requiredEnvironment);
+    }
+
+    private static void readInPropertiesFile(String filePath) throws Throwable {
+        String propertiesFilePath = String.format("src/test/resources/config/%s.properties", filePath);
         File propertiesFile = new File(propertiesFilePath);
         if(!propertiesFile.exists()) {
             throw new FileNotFoundException(
-                    String.format("No environment properties file for environment: %s", requiredEnvironment));
+                    String.format("No properties file found at: %s", filePath));
         }
         InputStream input = new FileInputStream(propertiesFilePath);
-        properties = new Properties();
         properties.load(input);
         input.close();
-
     }
 
     private String getProperty(final String keyName) {
